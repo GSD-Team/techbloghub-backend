@@ -1,0 +1,52 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+docker-compose.yml
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.DS_Store
+**/.run/**
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+out/
+
+.vscode/
+**/application.properties
+**/*.yaml
+**/resources/*.yml
+*.zip
+*.properties_bak
+admin-log/*
+web-log/*
+batch-log/*
+run.sh
+**/resources-bk/*
+admin/src/main/resources/static/driver/chromedriver.exe
+*.log
+*.pdf
+
+# Gradle
+.gradle
+./.gradle
+/build/
+.gradletasknamecache

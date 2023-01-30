@@ -1,0 +1,30 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
+
+dependencies {
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("com.querydsl:querydsl-jpa:5.0.0") //QueryDSL 의존성
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
+    //JWT
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-impl:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
+    implementation(project(":domain"))
+    implementation(project(":core"))
+
+    kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
+}
+
+val bootJar: BootJar by tasks
+val jar: Jar by tasks
+
+bootJar.enabled = true
+jar.enabled = false
+jar.duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+val test: Test by tasks
+test.onlyIf {
+    !project.hasProperty("test")
+}
