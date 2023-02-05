@@ -31,8 +31,7 @@ build/
 out/
 
 .vscode/
-**/application.properties
-**/*.yaml
+**/resources/application.properties
 **/resources/*.yml
 *.zip
 *.properties_bak
