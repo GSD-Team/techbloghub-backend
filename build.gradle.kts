@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 /**
  * Spring Boot Version : 3.0.2
  * Kotlin Version : 1.8.0
@@ -30,14 +32,28 @@ allprojects {
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
 
+    group = "com.gsd"
+    version = "1.0"
+
     repositories {
         mavenCentral()
     }
     kapt {
         correctErrorTypes = true //NonExistentClass 오류 방지
     }
-    group = "com.gsd"
-    version = "1.0"
+
+    tasks.test {
+        useJUnitPlatform()
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "17"
+        }
+    }
+    kotlin {
+        jvmToolchain(17)
+    }
 
 
 }
@@ -57,6 +73,12 @@ subprojects {
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine") //5.8.1
     }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "17"
+        }
+    }
 }
 
 
@@ -65,6 +87,11 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
 kotlin {
     jvmToolchain(17)
 }
