@@ -1,5 +1,6 @@
 package com.gsd.techbloghub.core.client.woowahan
 
+import com.gsd.techbloghub.core.client.woowahan.dto.http.WoowahanTbResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
@@ -22,5 +23,5 @@ interface WoowahanTbClient {
         value = ["/wp-admin/admin-ajax.php"],
         consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE]
     )
-    fun getPosts(requestBody: Map<String, *>): String
+    fun getPosts(requestBody: Map<String, *>): WoowahanTbResponse
 }

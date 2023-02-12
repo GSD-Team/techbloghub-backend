@@ -1,4 +1,4 @@
-package com.gsd.techbloghub.core.client.woowahan.dto
+package com.gsd.techbloghub.core.client.woowahan.dto.http
 
 import feign.form.FormProperty
 

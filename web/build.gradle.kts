@@ -7,6 +7,9 @@ dependencies {
     implementation("com.querydsl:querydsl-jpa:5.0.0") //QueryDSL 의존성
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+
+
     //JWT
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     implementation("io.jsonwebtoken:jjwt-impl:0.11.5")

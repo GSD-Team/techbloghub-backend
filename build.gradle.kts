@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 /**
  * Spring Boot Version : 3.0.2
@@ -95,3 +96,13 @@ tasks.withType<KotlinCompile> {
 kotlin {
     jvmToolchain(17)
 }
+
+val bootJar: BootJar by tasks
+val jar: Jar by tasks
+bootJar.enabled = false
+jar.enabled = true
+/**
+ * Please refer to https://docs.gradle.org/7.4/dsl/org.gradle.api.tasks.Copy.html#org.gradle.api.tasks.Copy:duplicatesStrategy for details.
+ * 에러 대응
+ */
+jar.duplicatesStrategy = DuplicatesStrategy.EXCLUDE
