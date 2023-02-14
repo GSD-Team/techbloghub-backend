@@ -3,11 +3,10 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("io.springfox:springfox-boot-starter:3.0.0")
     implementation("com.querydsl:querydsl-jpa:5.0.0") //QueryDSL 의존성
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
-    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
 
 
     //JWT

@@ -4,7 +4,7 @@ dependencies {
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     api("com.querydsl:querydsl-core")
 
-    runtimeOnly("mysql:mysql-connector-java")
+    runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     kapt("com.querydsl:querydsl-apt:5.0.0:jpa") //QueryDSL 의존성
     kapt("org.springframework.boot:spring-boot-configuration-processor") //QueryDSL 의존성
     implementation(project(":core"))

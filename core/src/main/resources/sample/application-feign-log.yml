@@ -1,0 +1,11 @@
+#Default Feign Client Logging Level Setting
+logging:
+  level:
+    com:
+      gsd:
+        techbloghub:
+          core:
+            client:
+              kakao: DEBUG
+              naver: DEBUG
+              woowahan: DEBUG
