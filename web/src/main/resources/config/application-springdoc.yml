@@ -1,6 +1,6 @@
 springdoc:
   version: v1.0.0
-  packages-to-scan: om.gsd.techbloghub.web.domain
+  packages-to-scan: com.gsd.techbloghub.web.domain
   swagger-ui:
     path: /api-docs
     tags-sorter: alpha
@@ -9,5 +9,5 @@ springdoc:
     path: /api-docs/json
     groups:
       enabled: true
-  default-consumes-media-type: application/json;charset=UTF-8
+#  default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8

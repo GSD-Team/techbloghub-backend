@@ -21,4 +21,9 @@ class ContentController : ContentAPI {
     override fun getContents(search: ContentSearch): ApiResult<ContentList> {
         return ApiResult.success(ContentList(0L, listOf()))
     }
+
+    @GetMapping("/mock")
+    override fun getMockContents(search: ContentSearch): ApiResult<ContentList> {
+        return ApiResult.success(ContentList.mock(search))
+    }
 }

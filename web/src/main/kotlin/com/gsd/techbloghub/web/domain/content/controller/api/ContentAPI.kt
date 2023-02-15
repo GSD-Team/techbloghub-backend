@@ -19,4 +19,7 @@ interface ContentAPI {
 
     @Operation(summary = "컨텐츠 리스트 조회", description = "컨텐츠 리스트를 조회한다. NoOffset 페이징 방식")
     fun getContents(@Parameter(`in` = ParameterIn.QUERY) search: ContentSearch): ApiResult<ContentList>
+
+    @Operation(summary = "컨텐츠 리스트 Mock 데이터 조회", description = "컨텐츠 리스트를 조회한다. NoOffset 페이징 방식")
+    fun getMockContents(@Parameter(`in` = ParameterIn.QUERY) search: ContentSearch): ApiResult<ContentList>
 }
