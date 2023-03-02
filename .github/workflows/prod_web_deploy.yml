@@ -1,0 +1,62 @@
+name: prod_web_deploy
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      branches:
+        - main
+
+env:
+  ECR_REGISTRY: 598510158001.dkr.ecr.ap-northeast-2.amazonaws.com
+  ECR_REPOSITORY: techbloghub
+  DOCKER_IMAGE_TAG: latest
+  MODULE_NAME: web
+  SPRING_PROFILE: prod
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        shell: bash
+
+      #AWS 인증
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+      # ECR 로그인
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amaz on-ecr-login@v1
+      # gradle에서 배포 버전 가져오기
+      - name: Get Deploy Version
+        id: deploy-version
+        run: echo "::set-output name=version::$(./gradlew ${MODULE_NAME}:properties | grep ^version:| awk '{print $2}')"
+
+      #ECR 이미지 푸시
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        run: |
+          docker build --platform arm64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$DOCKER_IMAGE_TAG ./$MODULE_NAME
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$DOCKER_IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$DOCKER_IMAGE_TAG
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$DOCKER_IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.deploy-version.outputs.version }}
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$DOCKER_IMAGE_TAG 
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.deploy-version.outputs.version }}
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$DOCKER_IMAGE_TAG"
+          
