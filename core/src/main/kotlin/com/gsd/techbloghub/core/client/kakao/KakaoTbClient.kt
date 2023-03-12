@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable
 @Component
 @FeignClient(
     name = "kakaoTbClient",
-    url = "https://tech.kakao.com"
+    url = "https://tech.kakao.com",
+    configuration = [KakaoTbClientConfig::class]
 )
 interface KakaoTbClient {
 

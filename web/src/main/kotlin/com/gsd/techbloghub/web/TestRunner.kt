@@ -21,7 +21,7 @@ class TestRunner @Autowired constructor(
     private val kakaoTbClient: KakaoTbClient,
 ) : ApplicationRunner {
     override fun run(args: ApplicationArguments?) {
-//        val wwh: WoowahanTbResponse = woowahanTbClient.getPosts(WoowahanTbRequest.from(1))
+        val wwh: WoowahanTbResponse = woowahanTbClient.getPosts(WoowahanTbRequest.from(1))
 //        val naver = naverTbClient.getList(1, 10)
 //        val kakao = kakaoTbClient.getList(1)
     }

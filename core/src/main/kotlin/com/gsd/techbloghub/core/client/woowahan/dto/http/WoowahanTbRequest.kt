@@ -1,7 +1,5 @@
 package com.gsd.techbloghub.core.client.woowahan.dto.http
 
-import feign.form.FormProperty
-
 /**
  * Created by Yohan lee
  * Created on 2023/02/06.

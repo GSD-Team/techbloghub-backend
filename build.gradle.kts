@@ -67,7 +67,10 @@ subprojects {
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8") //필수
         implementation("org.jetbrains.kotlin:kotlin-reflect")
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3") //JSON 파싱 에러 대응.
+        //JSON 파싱 에러 대응.
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+        //LocalDateTime 파싱 에러 대응.
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3")
         implementation("io.github.microutils:kotlin-logging-jvm:3.0.2")
         annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
