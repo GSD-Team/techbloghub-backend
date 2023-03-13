@@ -6,8 +6,6 @@ dependencies {
     implementation("com.querydsl:querydsl-jpa:5.0.0") //QueryDSL 의존성
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
-
 
     //JWT
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")

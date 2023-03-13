@@ -2,6 +2,10 @@ package com.gsd.techbloghub.core.client.woowahan.dto.http
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.gsd.techbloghub.core.client.application.BlogPost
+import com.gsd.techbloghub.core.client.application.BlogContent
+import com.gsd.techbloghub.core.client.application.PlatformVendor
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 /**
@@ -40,19 +44,39 @@ class WoowahanTbResponse(
         @JsonProperty("excerpt")
         val excerpt: String, //발췌
         @JsonProperty("permalink")
-        val link: String, //상세페이지 링크
-    ) {
+        override val link: String, //상세페이지 링크
+    ) : BlogPost {
+
+        override val id: String
+            get() = detail.id
+
+        override val title: String
+            get() = detail.title
+
+        override val postDate: LocalDate
+            get() = detail.postDate
+
+        override fun toBlogContent(platformVendor: PlatformVendor): BlogContent {
+            return BlogContent(
+                title = title,
+                link = link,
+                excerpt = excerpt,
+                postDate = postDate,
+                scrapDate = LocalDateTime.now(),
+                platformVendor = platformVendor
+            )
+        }
     }
 
 
     class PostDetail(
         @JsonProperty("ID")
-        val id: Long, //포스트 시퀀스
+        val id: String, //포스트 시퀀스
         @JsonProperty("post_author")
         val authorId: String, //작성자 시퀀스
         @JsonProperty("post_date")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-        val postDate: LocalDateTime, //작성일
+        val postDateTime: LocalDateTime, //작성일
         @JsonProperty("post_title")
         val title: String, //제목
         @JsonProperty("post_content")
@@ -62,5 +86,9 @@ class WoowahanTbResponse(
         val modifedDate: LocalDateTime, //수정일
     ) {
 
+        val postDate: LocalDate
+            get() = postDateTime.toLocalDate()
+
     }
+
 }
