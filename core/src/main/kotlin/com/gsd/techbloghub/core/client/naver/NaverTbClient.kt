@@ -1,6 +1,6 @@
 package com.gsd.techbloghub.core.client.naver
 
-import com.gsd.techbloghub.core.client.naver.dto.http.NaverTbResponse
+import com.gsd.techbloghub.core.client.naver.http.NaverTbResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.GetMapping

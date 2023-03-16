@@ -1,4 +1,4 @@
-package com.gsd.techbloghub.core.client.woowahan.dto.http
+package com.gsd.techbloghub.core.client.woowahan.http
 
 /**
  * Created by Yohan lee

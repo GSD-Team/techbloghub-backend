@@ -1,4 +1,4 @@
-package com.gsd.techbloghub.core.client.naver.dto.http
+package com.gsd.techbloghub.core.client.naver.http
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.gsd.techbloghub.core.client.application.BlogContent
@@ -34,16 +34,14 @@ class NaverTbResponse(
         @JsonProperty("url")
         val url: String,
         @JsonProperty("postHtml")
-        val content: String,
+        override val excerpt: String,
         @JsonProperty("postPublishedAt")
-        val postTimestamp: Timestamp
-
-
+        val postTimestamp: Timestamp,
     ) : BlogPost {
         override val id: String
             get() = url
         override val link: String
-            get() = "${D2_URL}${url}"
+            get() = "$D2_URL${url}"
         override val postDate: LocalDate
             get() = postTimestamp.toLocalDateTime().toLocalDate()
 
@@ -51,7 +49,7 @@ class NaverTbResponse(
             return BlogContent(
                 title = title,
                 link = link,
-                excerpt = content,
+                excerpt = excerpt,
                 postDate = postDate,
                 platformVendor = platformVendor,
                 scrapDate = LocalDateTime.now()

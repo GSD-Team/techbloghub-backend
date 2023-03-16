@@ -13,6 +13,7 @@ interface BlogPost {
     val title: String
     val link: String
     val postDate: LocalDate
+    val excerpt: String
 
 
     fun toBlogContent(platformVendor: PlatformVendor): BlogContent

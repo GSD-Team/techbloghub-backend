@@ -29,4 +29,18 @@ class BlogContent(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DatePattern.YYYY_MM_DD_HH_MM_SS_STR)
     val scrapDate: LocalDateTime
 ) {
+
+
+    companion object {
+        fun from(blogPost: BlogPost, vendor: PlatformVendor): BlogContent {
+            return BlogContent(
+                title = blogPost.title,
+                link = blogPost.link,
+                postDate = blogPost.postDate,
+                platformVendor = vendor,
+                excerpt = blogPost.excerpt,
+                scrapDate = LocalDateTime.now()
+            )
+        }
+    }
 }

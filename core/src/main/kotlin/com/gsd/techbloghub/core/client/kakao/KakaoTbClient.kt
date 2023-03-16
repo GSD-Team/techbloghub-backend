@@ -1,5 +1,6 @@
 package com.gsd.techbloghub.core.client.kakao
 
+import com.gsd.techbloghub.core.client.kakao.http.KakaoTbPost
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable
 interface KakaoTbClient {
 
     @GetMapping("/blog/page/{page}")
-    fun getList(@PathVariable("page") page: Int)
+    fun getList(@PathVariable("page") page: Int): List<KakaoTbPost>
 
     @GetMapping("/{year}/{month}/{day}/{title}")
     fun getDetail(

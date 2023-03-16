@@ -1,7 +1,7 @@
 package com.gsd.techbloghub.core.client
 
 import com.gsd.techbloghub.core.client.woowahan.WoowahanTbClient
-import com.gsd.techbloghub.core.client.woowahan.dto.http.WoowahanTbRequest
+import com.gsd.techbloghub.core.client.woowahan.http.WoowahanTbRequest
 import com.gsd.techbloghub.core.support.SpringSupport
 import org.assertj.core.api.AssertionsForInterfaceTypes
 import org.assertj.core.api.AssertionsForInterfaceTypes.*

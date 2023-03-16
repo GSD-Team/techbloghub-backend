@@ -1,4 +1,4 @@
-package com.gsd.techbloghub.core.client.woowahan.dto.http
+package com.gsd.techbloghub.core.client.woowahan.http
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -42,7 +42,7 @@ class WoowahanTbResponse(
         @JsonProperty("post")
         val detail: PostDetail,
         @JsonProperty("excerpt")
-        val excerpt: String, //발췌
+        override val excerpt: String, //발췌
         @JsonProperty("permalink")
         override val link: String, //상세페이지 링크
     ) : BlogPost {
