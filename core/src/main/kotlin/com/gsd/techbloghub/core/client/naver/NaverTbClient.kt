@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam
 interface NaverTbClient {
 
     @GetMapping("/api/v1/contents")
-    fun getList(@RequestParam(value = "page") page: Int, @RequestParam(value = "size") pageSize: Int): NaverTbResponse
+    fun getPosts(
+        @RequestParam(value = "page") page: Int,
+        @RequestParam(value = "size") pageSize: Int = 10
+    ): NaverTbResponse
 
     @GetMapping("/api/v1/contents/{postId}")
     fun getDetail(@PathVariable("postId") postId: Int)

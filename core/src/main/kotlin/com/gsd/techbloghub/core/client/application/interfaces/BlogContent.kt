@@ -1,4 +1,4 @@
-package com.gsd.techbloghub.core.client.application
+package com.gsd.techbloghub.core.client.application.interfaces
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.gsd.techbloghub.core.vo.DatePattern
@@ -12,6 +12,8 @@ import java.time.LocalDateTime
  **/
 
 class BlogContent(
+    @Schema(description = "시퀀스", hidden = true)
+    val id: String,
     @Schema(description = "제목", required = true)
     val title: String,
     @Schema(description = "포스팅 링크", required = true)
@@ -32,8 +34,9 @@ class BlogContent(
 
 
     companion object {
-        fun from(blogPost: BlogPost, vendor: PlatformVendor): BlogContent {
+        fun of(blogPost: BlogPost, vendor: PlatformVendor): BlogContent {
             return BlogContent(
+                id = blogPost.id,
                 title = blogPost.title,
                 link = blogPost.link,
                 postDate = blogPost.postDate,

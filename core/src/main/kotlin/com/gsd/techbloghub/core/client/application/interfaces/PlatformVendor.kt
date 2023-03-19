@@ -1,4 +1,4 @@
-package com.gsd.techbloghub.core.client.application
+package com.gsd.techbloghub.core.client.application.interfaces
 
 /**
  * Created by Yohan lee

@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.querydsl:querydsl-jpa:5.0.0") //QueryDSL 의존성
+    implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta") //QueryDSL 의존성
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
 
@@ -15,7 +15,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core"))
 
-    kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
+    kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
 }
 
 val bootJar: BootJar by tasks

@@ -1,5 +1,6 @@
 package com.gsd.techbloghub.domain.content.model
 
+import com.gsd.techbloghub.core.client.application.interfaces.BlogContent
 import com.gsd.techbloghub.domain.content.constant.ContentType
 import com.gsd.techbloghub.domain.content.constant.JobType
 import jakarta.persistence.*
@@ -51,11 +52,27 @@ class Content(
 
     @CreatedDate
     @Column(name = "created_date")
-    val createdDate: LocalDateTime? = null,
+    var createdDate: LocalDateTime? = null,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     var id: Long? = null,
 ) {
+
+
+    companion object {
+        fun of(content: BlogContent, vendor: Vendor): Content {
+            return Content(
+                contentSeq = content.id,
+                title = content.title,
+                postDate = content.postDate,
+                thumbnailURL = content.thumbnailURL,
+                detailURL = content.link,
+                jobType = JobType.UNKNOWN, //우선 Unknown으로 설정
+                contentType = ContentType.BLOG,
+                vendor = vendor
+            )
+        }
+    }
 }

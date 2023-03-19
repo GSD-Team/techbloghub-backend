@@ -1,7 +1,7 @@
 package com.gsd.techbloghub.web.domain.content.dto
 
-import com.gsd.techbloghub.core.client.application.BlogContent
-import com.gsd.techbloghub.core.client.application.PlatformVendor
+import com.gsd.techbloghub.core.client.application.interfaces.BlogContent
+import com.gsd.techbloghub.core.client.application.interfaces.PlatformVendor
 import java.time.LocalDate
 import java.time.LocalDateTime
 
@@ -29,7 +29,8 @@ class ContentList(
                         "https://techblog.woowahan.com/wp-content/uploads/2021/04/logo-e1619937994625.png"
                     ),
                     postDate = LocalDate.now(),
-                    scrapDate = LocalDateTime.now()
+                    scrapDate = LocalDateTime.now(),
+                    id = ""
                 ),
                 BlogContent(
                     title = "모던 프론트엔드 프로젝트 구성 기법 - 모노레포 도구 편",
@@ -42,7 +43,8 @@ class ContentList(
                         "https://d2.naver.com/static/img/app/d2_logo.gif"
                     ),
                     postDate = LocalDate.now(),
-                    scrapDate = LocalDateTime.now()
+                    scrapDate = LocalDateTime.now(),
+                    id = ""
                 ),
                 BlogContent(
                     title = "전자증명서 리액트 페이지 및 레이어 동적 라우팅",
@@ -55,7 +57,8 @@ class ContentList(
                         "https://tech.kakao.com/wp-content/uploads/2022/02/kakao-tech-logo-1-e1649831117387.png"
                     ),
                     postDate = LocalDate.now(),
-                    scrapDate = LocalDateTime.now()
+                    scrapDate = LocalDateTime.now(),
+                    id = ""
                 ),
             )
 

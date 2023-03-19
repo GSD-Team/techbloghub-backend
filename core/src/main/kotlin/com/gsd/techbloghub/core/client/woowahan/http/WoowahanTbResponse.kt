@@ -2,9 +2,9 @@ package com.gsd.techbloghub.core.client.woowahan.http
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.gsd.techbloghub.core.client.application.BlogPost
-import com.gsd.techbloghub.core.client.application.BlogContent
-import com.gsd.techbloghub.core.client.application.PlatformVendor
+import com.gsd.techbloghub.core.client.application.interfaces.BlogPost
+import com.gsd.techbloghub.core.client.application.interfaces.BlogContent
+import com.gsd.techbloghub.core.client.application.interfaces.PlatformVendor
 import java.time.LocalDate
 import java.time.LocalDateTime
 
@@ -58,6 +58,7 @@ class WoowahanTbResponse(
 
         override fun toBlogContent(platformVendor: PlatformVendor): BlogContent {
             return BlogContent(
+                id = id,
                 title = title,
                 link = link,
                 excerpt = excerpt,

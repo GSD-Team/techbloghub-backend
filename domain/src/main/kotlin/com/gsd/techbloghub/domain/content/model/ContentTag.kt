@@ -23,7 +23,7 @@ class ContentTag(
 
     @CreatedDate
     @Column(name = "created_date")
-    val createdDate: LocalDateTime? = null,
+    var createdDate: LocalDateTime? = null,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -17,7 +17,7 @@ class NaverTbClientTest @Autowired constructor(
     @Test
     @DisplayName("포스트 목록을 가져온다.")
     fun getPosts() {
-        val response = naverTbClient.getList(0, 10)
+        val response = naverTbClient.getPosts(0)
         response.contents.forEach {
             println(it.title)
             println(it.link)

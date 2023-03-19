@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration
  * Created by Yohan lee
  * Created on 2023/02/13.
  * https://springdoc.org/
- * https://springdoc.org/migrating-from-springfox.html
+ * https://springdoc.org/migrating-of-springfox.html
  **/
 
 @Configuration
