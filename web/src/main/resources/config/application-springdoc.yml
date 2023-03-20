@@ -9,5 +9,5 @@ springdoc:
     path: /api-docs/json
     groups:
       enabled: true
-#  default-consumes-media-type: application/json;charset=UTF-8
+#  default-consumes-media-type:
   default-produces-media-type: application/json;charset=UTF-8

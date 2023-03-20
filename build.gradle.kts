@@ -33,6 +33,7 @@ allprojects {
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
 
+
     group = "com.gsd"
     version = "1.0"
 
@@ -60,6 +61,13 @@ allprojects {
 }
 
 subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+    apply(plugin = "org.jetbrains.kotlin.kapt")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
+
     repositories {
         mavenCentral()
     }
@@ -67,7 +75,10 @@ subprojects {
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8") //필수
         implementation("org.jetbrains.kotlin:kotlin-reflect")
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3") //JSON 파싱 에러 대응.
+        //JSON 파싱 에러 대응.
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+        //LocalDateTime 파싱 에러 대응.
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3")
         implementation("io.github.microutils:kotlin-logging-jvm:3.0.2")
         annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 

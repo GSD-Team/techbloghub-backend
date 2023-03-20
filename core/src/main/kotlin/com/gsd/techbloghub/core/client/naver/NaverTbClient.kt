@@ -1,5 +1,6 @@
 package com.gsd.techbloghub.core.client.naver
 
+import com.gsd.techbloghub.core.client.naver.http.NaverTbResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam
 interface NaverTbClient {
 
     @GetMapping("/api/v1/contents")
-    fun getList(@RequestParam(value = "page") page: Int, @RequestParam(value = "size") pageSize: Int)
+    fun getPosts(
+        @RequestParam(value = "page") page: Int,
+        @RequestParam(value = "size") pageSize: Int = 10
+    ): NaverTbResponse
 
     @GetMapping("/api/v1/contents/{postId}")
     fun getDetail(@PathVariable("postId") postId: Int)

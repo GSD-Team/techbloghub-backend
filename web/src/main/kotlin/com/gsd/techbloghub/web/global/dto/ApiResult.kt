@@ -34,6 +34,10 @@ class ApiResult<T> private constructor(
             return ApiResult(ApiResultCode.INVALID_DATA, msg, null)
         }
 
+        fun errorAndEmptyArr(msg: String): ApiResult<Any> {
+            return ApiResult(ApiResultCode.INVALID_DATA, msg, emptyList<Any>())
+        }
+
         fun error(msg: String, apiResultCode: ApiResultCode): ApiResult<Any> {
             return ApiResult(apiResultCode, msg, null)
         }

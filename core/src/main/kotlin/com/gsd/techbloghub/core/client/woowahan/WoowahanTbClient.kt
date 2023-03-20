@@ -1,6 +1,6 @@
 package com.gsd.techbloghub.core.client.woowahan
 
-import com.gsd.techbloghub.core.client.woowahan.dto.http.WoowahanTbResponse
+import com.gsd.techbloghub.core.client.woowahan.http.WoowahanTbResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
