@@ -1,6 +1,6 @@
 package com.gsd.techbloghub.domain.content.model
 
-import com.gsd.techbloghub.core.client.application.interfaces.BlogPosts
+import com.gsd.techbloghub.core.client.application.interfaces.BlogContents
 import com.gsd.techbloghub.domain.content.constant.ContentType
 import jakarta.persistence.*
 import java.time.LocalDate
@@ -32,9 +32,9 @@ class ContentScrap(
     @Column(name = "id")
     var id: Long? = null,
 ) {
-    fun completeScrap(blogPosts: BlogPosts) {
-        this.lastScrapPostDate = blogPosts.lastScrapPostDate
-        this.lastContentSeq = blogPosts.lastScrapId
+    fun completeScrap(blogContents: BlogContents) {
+        this.lastScrapPostDate = blogContents.lastScrapPostDate
+        this.lastContentSeq = blogContents.lastScrapId
     }
 
 

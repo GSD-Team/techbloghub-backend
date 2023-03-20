@@ -3,7 +3,7 @@ package com.gsd.techbloghub.core.client.application
 import com.gsd.techbloghub.core.client.application.component.TbBlogCrawler
 import com.gsd.techbloghub.core.client.application.interfaces.BlogContent
 import com.gsd.techbloghub.core.client.application.interfaces.BlogPost
-import com.gsd.techbloghub.core.client.application.interfaces.BlogPosts
+import com.gsd.techbloghub.core.client.application.interfaces.BlogContents
 import com.gsd.techbloghub.core.client.application.interfaces.PlatformVendor
 import org.assertj.core.api.AssertionsForInterfaceTypes.*
 import org.junit.jupiter.api.DisplayName
@@ -23,7 +23,7 @@ class TbBlogCrawlerTest {
         //given
         val lastId = "50"
         //when
-        val scrapNewPosts: BlogPosts = TbBlogCrawler.scrapNewPosts(
+        val scrapNewPosts: BlogContents = TbBlogCrawler.scrapNewPosts(
             scrapFunction = { page -> mockScrap(page) },
             firstPage = 0,
             lastScrapId = lastId,

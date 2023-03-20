@@ -2,7 +2,7 @@ package com.gsd.techbloghub.core.client.application.component
 
 import com.gsd.techbloghub.core.client.application.interfaces.BlogContent
 import com.gsd.techbloghub.core.client.application.interfaces.BlogPost
-import com.gsd.techbloghub.core.client.application.interfaces.BlogPosts
+import com.gsd.techbloghub.core.client.application.interfaces.BlogContents
 import com.gsd.techbloghub.core.client.application.interfaces.PlatformVendor
 
 /**
@@ -25,7 +25,7 @@ object TbBlogCrawler {
         firstPage: Int,
         lastScrapId: String?,
         platformVendor: PlatformVendor,
-    ): BlogPosts {
+    ): BlogContents {
         val blogContents = mutableListOf<BlogContent>()
         var page = firstPage
         var processScrap = true
@@ -46,6 +46,6 @@ object TbBlogCrawler {
             page++;
         }
 
-        return BlogPosts.from(blogContents.toList())
+        return BlogContents.from(blogContents.toList())
     }
 }

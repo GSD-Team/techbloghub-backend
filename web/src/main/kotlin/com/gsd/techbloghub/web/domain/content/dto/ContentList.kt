@@ -1,7 +1,7 @@
 package com.gsd.techbloghub.web.domain.content.dto
 
-import com.gsd.techbloghub.core.client.application.interfaces.BlogContent
 import com.gsd.techbloghub.core.client.application.interfaces.PlatformVendor
+import com.gsd.techbloghub.web.domain.content.dto.search.ContentSearch
 import java.time.LocalDate
 import java.time.LocalDateTime
 
@@ -11,14 +11,22 @@ import java.time.LocalDateTime
  **/
 class ContentList(
     val lastId: Long?,
-    val blogContents: List<BlogContent>
+    val blogContents: List<ContentDto>
 ) {
 
     companion object {
+
+        fun resultOf(search: ContentSearch, blogContents: List<ContentDto>): ContentList {
+            return ContentList(
+                lastId = search.nextCurrentId,
+                blogContents = blogContents
+            )
+        }
+
         fun mock(search: ContentSearch): ContentList {
-            val blogContents = mutableListOf<BlogContent>()
+            val blogContents = mutableListOf<ContentDto>()
             val randomList = listOf(
-                BlogContent(
+                ContentDto(
                     title = "Spark on Kubernetes로 이관하기",
                     link = "https://techblog.woowahan.com/10291/",
                     thumbnailURL = null,
@@ -32,7 +40,7 @@ class ContentList(
                     scrapDate = LocalDateTime.now(),
                     id = ""
                 ),
-                BlogContent(
+                ContentDto(
                     title = "모던 프론트엔드 프로젝트 구성 기법 - 모노레포 도구 편",
                     link = "https://d2.naver.com/helloworld/7553804",
                     thumbnailURL = "https://d2.naver.com/content/images/2022/04/----.png",
@@ -46,7 +54,7 @@ class ContentList(
                     scrapDate = LocalDateTime.now(),
                     id = ""
                 ),
-                BlogContent(
+                ContentDto(
                     title = "전자증명서 리액트 페이지 및 레이어 동적 라우팅",
                     link = "https://tech.kakao.com/2022/07/13/active-routing-for-e-certificate/",
                     thumbnailURL = null,

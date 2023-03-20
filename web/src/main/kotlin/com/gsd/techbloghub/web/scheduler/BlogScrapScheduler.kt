@@ -2,7 +2,7 @@ package com.gsd.techbloghub.web.scheduler
 
 import com.gsd.techbloghub.core.client.application.component.TbBlogCrawler
 import com.gsd.techbloghub.core.client.application.interfaces.BlogPost
-import com.gsd.techbloghub.core.client.application.interfaces.BlogPosts
+import com.gsd.techbloghub.core.client.application.interfaces.BlogContents
 import com.gsd.techbloghub.core.client.kakao.KakaoTbClient
 import com.gsd.techbloghub.core.client.naver.NaverTbClient
 import com.gsd.techbloghub.core.client.woowahan.WoowahanTbClient
@@ -66,7 +66,7 @@ class BlogScrapScheduler @Autowired constructor(
     private fun scrapBlog(vendorCode: VendorCode, firstPage: Int, scrapFunction: (Int) -> List<BlogPost>) {
         val vendor = getVendor(vendorCode)
         val lastScrap = vendorService.getLastScrap(vendorCode, ContentType.BLOG)
-        val scrapNewPosts: BlogPosts = TbBlogCrawler.scrapNewPosts(
+        val scrapNewPosts: BlogContents = TbBlogCrawler.scrapNewPosts(
             scrapFunction = scrapFunction,
             firstPage = firstPage,
             lastScrapId = lastScrap.lastContentSeq,
@@ -78,7 +78,7 @@ class BlogScrapScheduler @Autowired constructor(
     }
 
 
-    private fun addPosts(vendorCode: VendorCode, posts: BlogPosts) {
+    private fun addPosts(vendorCode: VendorCode, posts: BlogContents) {
         contentScrapService.addAll(vendorCode, posts.contents)
         vendorService.completeScrap(vendorCode, posts)
     }

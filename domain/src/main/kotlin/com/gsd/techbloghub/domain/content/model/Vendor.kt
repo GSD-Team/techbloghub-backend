@@ -1,5 +1,6 @@
 package com.gsd.techbloghub.domain.content.model
 
+import com.gsd.techbloghub.core.client.application.interfaces.PlatformVendor
 import com.gsd.techbloghub.core.constant.VendorCode
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
@@ -35,4 +36,13 @@ class Vendor(
     @Column(name = "id")
     var id: Long? = null,
 ) {
+
+    fun toPlatformVendor(): PlatformVendor {
+        return PlatformVendor(
+            id = id!!,
+            name = vendorName,
+            thumbnailURL = vendorImageLink,
+
+            )
+    }
 }

@@ -1,6 +1,6 @@
 package com.gsd.techbloghub.web.domain.content.service
 
-import com.gsd.techbloghub.core.client.application.interfaces.BlogPosts
+import com.gsd.techbloghub.core.client.application.interfaces.BlogContents
 import com.gsd.techbloghub.core.constant.VendorCode
 import com.gsd.techbloghub.domain.content.constant.ContentType
 import com.gsd.techbloghub.domain.content.model.ContentScrap
@@ -47,8 +47,8 @@ class VendorService @Autowired constructor(
     }
 
     @Transactional
-    fun completeScrap(vendorCode: VendorCode, blogPosts: BlogPosts) {
+    fun completeScrap(vendorCode: VendorCode, blogContents: BlogContents) {
         val contentScrap = getLastScrap(vendorCode, ContentType.BLOG)
-        contentScrap.completeScrap(blogPosts)
+        contentScrap.completeScrap(blogContents)
     }
 }

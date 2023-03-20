@@ -46,6 +46,9 @@ class Content(
     @Enumerated(EnumType.STRING)
     val contentType: ContentType,
 
+    @Column(name = "excerpt")
+    val excerpt: String,
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vendor_id")
     val vendor: Vendor,
@@ -71,7 +74,8 @@ class Content(
                 detailURL = content.link,
                 jobType = JobType.UNKNOWN, //우선 Unknown으로 설정
                 contentType = ContentType.BLOG,
-                vendor = vendor
+                vendor = vendor,
+                excerpt = content.excerpt,
             )
         }
     }
