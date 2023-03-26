@@ -13,6 +13,7 @@ import com.gsd.techbloghub.web.domain.content.dto.vendor.VendorDto
 import com.gsd.techbloghub.web.domain.content.service.ContentScrapService
 import com.gsd.techbloghub.web.domain.content.service.VendorService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Profile
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Component
  * Created on 2023/03/17.
  **/
 
+@Profile("prod")
 @Component
 class BlogScrapScheduler @Autowired constructor(
     private val naverTbClient: NaverTbClient,
