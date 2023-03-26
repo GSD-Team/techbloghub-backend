@@ -20,6 +20,9 @@ class Vendor(
     @Column(name = "vendor_image_link")
     val vendorImageLink: String? = null,
 
+    @Column(name = "vendor_content_image_link")
+    val vendorContentImageLink: String? = null,
+
     @Column(name = "vendor_code")
     @Enumerated(EnumType.STRING)
     val vendorCode: VendorCode,

@@ -40,7 +40,7 @@ class ContentDto(
                 id = content.id.toString(),
                 title = content.title,
                 link = content.detailURL,
-                thumbnailURL = content.thumbnailURL,
+                thumbnailURL = content.vendor.vendorContentImageLink,
                 excerpt = content.excerpt,
                 platformVendor = content.vendor.toPlatformVendor(),
                 postDate = content.postDate,
