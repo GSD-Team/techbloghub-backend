@@ -37,9 +37,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
-      - name: Setup AWS CLI
-        uses: aws-actions/aws-cli@v2.1.0
-
       # S3에서 가져와서 Spring Properties 적재.
       - name: Fetch from S3 and load Spring Properties
         run: |
