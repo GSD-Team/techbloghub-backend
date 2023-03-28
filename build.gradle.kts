@@ -35,7 +35,8 @@ allprojects {
 
 
     group = "com.gsd"
-    version = "1.0"
+    // 정식버전이 아닐 경우, 대버전 업 X
+    version = "0.0.1"
 
     repositories {
         mavenCentral()
