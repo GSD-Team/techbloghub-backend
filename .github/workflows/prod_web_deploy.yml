@@ -64,11 +64,10 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         run: |
-          docker build --platform arm64 -t /$ECR_REPOSITORY:$DOCKER_LATEST_TAG ./$MODULE_NAME
+          docker build --platform arm64 -t $ECR_REPOSITORY:$DOCKER_LATEST_TAG ./$MODULE_NAME
           docker tag $ECR_REPOSITORY:$DOCKER_LATEST_TAG $ECR_REPOSITORY:$DOCKER_LATEST_TAG
           docker tag $ECR_REPOSITORY:$DOCKER_LATEST_TAG $ECR_REPOSITORY:${{ steps.deploy-version.outputs.version }}
           docker push $ECR_REPOSITORY:$DOCKER_LATEST_TAG 
           docker push $ECR_REPOSITORY:${{ steps.deploy-version.outputs.version }}
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$DOCKER_LATEST_TAG"
-          
       #EC2 배포
