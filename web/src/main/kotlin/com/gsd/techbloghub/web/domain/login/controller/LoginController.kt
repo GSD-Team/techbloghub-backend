@@ -1,8 +1,9 @@
 package com.gsd.techbloghub.web.domain.login.controller
 
 import com.gsd.techbloghub.web.domain.login.controller.api.LoginAPI
+import com.gsd.techbloghub.web.domain.login.dto.LoginSuccess
 import com.gsd.techbloghub.web.domain.login.dto.LoginUser
-import com.gsd.techbloghub.web.domain.login.service.OauthLoginService
+import com.gsd.techbloghub.web.domain.login.service.GithubLoginService
 import com.gsd.techbloghub.web.global.dto.ApiResult
 import jakarta.validation.constraints.NotBlank
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,10 +20,10 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/login")
 class LoginController @Autowired constructor(
-    private val oauthLoginService: OauthLoginService,
+    private val githubLoginService: GithubLoginService,
 ) : LoginAPI {
     @GetMapping("/github")
-    override fun loginGithub(@RequestParam("code") @NotBlank(message = "code는 필수 값입니다.") code: String): ApiResult<LoginUser> {
-        return ApiResult.success(oauthLoginService.loginGithub(code))
+    override fun loginGithub(@RequestParam("code") @NotBlank(message = "code는 필수 값입니다.") code: String): ApiResult<LoginSuccess> {
+        return ApiResult.success(githubLoginService.login(code))
     }
 }

@@ -1,6 +1,7 @@
 package com.gsd.techbloghub.web.global.security
 
 import com.gsd.techbloghub.core.client.oauth.GithubOauthClient
+import com.gsd.techbloghub.web.global.component.JwtTokenProvider
 import com.gsd.techbloghub.web.global.security.filter.LoginCheckFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
@@ -23,6 +24,7 @@ import org.springframework.web.cors.CorsUtils
 @EnableWebSecurity
 class SecurityConfig @Autowired constructor(
     private val authConfig: AuthenticationConfiguration,
+    private val jwtTokenProvider: JwtTokenProvider,
 ) {
     @Bean
     fun config(http: HttpSecurity): SecurityFilterChain {
@@ -30,6 +32,7 @@ class SecurityConfig @Autowired constructor(
             .httpBasic().disable()
             .formLogin().disable()
             .csrf().disable()
+            .addFilterAt(loginCheckFilter(), BasicAuthenticationFilter::class.java)
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests {
                 it.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
@@ -42,7 +45,7 @@ class SecurityConfig @Autowired constructor(
 
 
     private fun loginCheckFilter(): BasicAuthenticationFilter {
-        return LoginCheckFilter(authConfig.authenticationManager)
+        return LoginCheckFilter(authConfig.authenticationManager, jwtTokenProvider)
     }
 
     @Bean

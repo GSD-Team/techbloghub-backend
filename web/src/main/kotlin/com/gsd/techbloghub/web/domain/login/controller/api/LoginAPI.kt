@@ -1,5 +1,6 @@
 package com.gsd.techbloghub.web.domain.login.controller.api
 
+import com.gsd.techbloghub.web.domain.login.dto.LoginSuccess
 import com.gsd.techbloghub.web.domain.login.dto.LoginUser
 import com.gsd.techbloghub.web.global.dto.ApiResult
 import io.swagger.v3.oas.annotations.Operation
@@ -15,5 +16,5 @@ import io.swagger.v3.oas.annotations.tags.Tag
 interface LoginAPI {
 
     @Operation(summary = "깃허브 Oauth2 로그인 API")
-    fun loginGithub(@Schema(description = "사용자 Github 인증 코드") code: String): ApiResult<LoginUser>
+    fun loginGithub(@Schema(description = "사용자 Github 인증 코드") code: String): ApiResult<LoginSuccess>
 }

@@ -5,8 +5,8 @@ repositories {
 }
 
 dependencies {
-    api("org.springframework.boot:spring-boot-starter-data-jpa")
     api("com.querydsl:querydsl-core")
+    api("org.springframework.boot:spring-boot-starter-data-jpa")
 
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     kapt("com.querydsl:querydsl-apt:5.0.0:jakarta") //QueryDSL 의존성(jakarta.persistence 패키지 이용시, 마지막 ":jpa" 제거)

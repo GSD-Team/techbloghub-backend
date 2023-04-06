@@ -1,5 +1,6 @@
 package com.gsd.techbloghub.domain.user.model
 
+import com.gsd.techbloghub.core.client.oauth.http.GithubOauth2User
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -24,7 +25,7 @@ class User(
     var profileImageURL: String?,
 
     @Column(name = "recent_login_date")
-    var recentLoginDate: LocalDateTime?,
+    var recentLoginDate: LocalDateTime? = null,
 
     @CreatedDate
     @Column(name = "register_date")
@@ -35,4 +36,17 @@ class User(
     @Column(name = "id")
     var id: Long? = null,
 ) {
+    fun login() {
+        this.recentLoginDate = LocalDateTime.now()
+    }
+
+    companion object {
+        fun githubOf(githubOauth2User: GithubOauth2User): User {
+            return User(
+                name = githubOauth2User.userName,
+                githubLoginId = githubOauth2User.userSeq,
+                profileImageURL = githubOauth2User.profileImageURL,
+            )
+        }
+    }
 }

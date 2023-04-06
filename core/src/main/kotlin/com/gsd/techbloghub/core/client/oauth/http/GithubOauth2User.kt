@@ -8,6 +8,17 @@ import com.fasterxml.jackson.annotation.JsonProperty
  **/
 class GithubOauth2User(
     @JsonProperty("login")
+    val userId: String,
+    @JsonProperty("id")
+    val userSeq: String,
+    @JsonProperty("name")
     val userName: String,
-) {
+    @JsonProperty("avatar_url")
+    val profileImageURL: String?,
+    @JsonProperty("company")
+    val company: String?,
+    @JsonProperty("bio")
+    val jobPosition: String,
+
+    ) {
 }
