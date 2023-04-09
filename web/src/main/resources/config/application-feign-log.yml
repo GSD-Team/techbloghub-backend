@@ -13,3 +13,4 @@ logging:
               kakao: DEBUG
               naver: DEBUG
               woowahan: DEBUG
+              github: DEBUG

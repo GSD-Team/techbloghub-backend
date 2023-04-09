@@ -36,7 +36,7 @@ allprojects {
 
     group = "com.gsd"
     // 정식버전이 아닐 경우, 대버전 업 X
-    version = "0.0.1"
+    version = "0.0.2"
 
     repositories {
         mavenCentral()
@@ -77,9 +77,9 @@ subprojects {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8") //필수
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         //JSON 파싱 에러 대응.
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
         //LocalDateTime 파싱 에러 대응.
-        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3")
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.0")
         implementation("io.github.microutils:kotlin-logging-jvm:3.0.2")
         annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
