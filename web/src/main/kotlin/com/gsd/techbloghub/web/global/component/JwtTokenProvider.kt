@@ -54,7 +54,9 @@ class JwtTokenProvider @Autowired constructor(
     }
 
     fun getBody(token: String): LoginUser {
-        val clearToken = token.replaceFirst(JwtProperties.BEARER, "")
+        val clearToken = token
+            .replaceFirst(JwtProperties.BEARER, "")
+            .trim()
         val body = Jwts.parserBuilder()
             .setSigningKey(signingKey)
             .build()

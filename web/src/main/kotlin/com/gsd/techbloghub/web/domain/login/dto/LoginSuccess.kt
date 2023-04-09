@@ -18,7 +18,7 @@ class LoginSuccess(
 ) {
     companion object {
         fun jwtOf(accessToken: String, loginUser: LoginUser): LoginSuccess {
-            return LoginSuccess("${JwtProperties.BEARER} ${accessToken}", loginUser)
+            return LoginSuccess("${JwtProperties.BEARER}${accessToken}", loginUser)
         }
     }
 }
