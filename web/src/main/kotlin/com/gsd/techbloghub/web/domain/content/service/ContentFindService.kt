@@ -23,7 +23,8 @@ class ContentFindService @Autowired constructor(
         return contentQueryRepository.findAllNoOffset(
             offsetId = search.currentNextId,
             pageSize = search.pageSize,
-            query = search.query
+            query = search.query,
+            vendorCode = search.vendorCode,
         )
             .map { ContentDto.of(it) }
             .toList()
