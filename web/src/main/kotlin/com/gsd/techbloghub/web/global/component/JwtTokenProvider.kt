@@ -7,6 +7,8 @@ import io.jsonwebtoken.Claims
 import io.jsonwebtoken.JwtParser
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
+import io.jsonwebtoken.jackson.io.JacksonDeserializer
+import io.jsonwebtoken.jackson.io.JacksonSerializer
 import io.jsonwebtoken.security.Keys
 import jakarta.annotation.PostConstruct
 import org.springframework.beans.factory.annotation.Autowired
@@ -34,6 +36,7 @@ class JwtTokenProvider @Autowired constructor(
         this.jwtParser = Jwts.parserBuilder()
             .setSigningKey(signingKey)
             .build()
+
     }
 
     fun createAccessToken(user: LoginUser): String {
@@ -45,14 +48,17 @@ class JwtTokenProvider @Autowired constructor(
             .setIssuedAt(Date())
             .setExpiration(Date(System.currentTimeMillis() + JwtProperties.ACCESS_TOKEN_MILLI_SEC))
             .signWith(signingKey, SignatureAlgorithm.HS256)
+            // 라이브러리상에서 사용하는 ObjectMapper는 LocalDatetime 파싱 시, 에러발생함으로 교체.
+            .serializeToJsonWith(JacksonSerializer(objectMapper))
             .compact()
     }
 
     fun getBody(token: String): LoginUser {
+        val clearToken = token.replaceFirst(JwtProperties.BEARER, "")
         val body = Jwts.parserBuilder()
             .setSigningKey(signingKey)
             .build()
-            .parseClaimsJws(token).body[JwtProperties.USER_INFO_KEY] ?: throw NullPointerException("JWT Body is null.")
+            .parseClaimsJws(clearToken).body[JwtProperties.USER_INFO_KEY] ?: throw NullPointerException("JWT Body is null.")
         return objectMapper.convertValue(body, LoginUser::class.java)
 
     }

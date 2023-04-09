@@ -1,6 +1,7 @@
 package com.gsd.techbloghub.web.domain.login.dto
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import com.gsd.techbloghub.core.vo.DatePattern
 import com.gsd.techbloghub.domain.user.model.User
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.persistence.Column
@@ -23,10 +24,10 @@ class LoginUser(
     @Schema(description = "사용자 프로필 이미지 URL")
     var profileImageURL: String? = null,
     @Schema(description = "최근 로그인 날짜")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = DatePattern.YYYY_MM_DD_HH_MM_SS_STR, shape = JsonFormat.Shape.STRING)
     var recentLoginDate: LocalDateTime,
     @Schema(description = "회원가입 날짜")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = DatePattern.YYYY_MM_DD_HH_MM_SS_STR, shape = JsonFormat.Shape.STRING)
     var registerDate: LocalDateTime,
 ) {
 

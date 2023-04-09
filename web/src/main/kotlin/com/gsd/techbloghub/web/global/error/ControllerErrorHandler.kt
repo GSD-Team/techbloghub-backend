@@ -15,6 +15,7 @@ class ControllerErrorHandler {
 
     @ExceptionHandler(IllegalArgumentException::class)
     fun illegalArgumentExceptionHandler(ex: IllegalArgumentException): ApiResult<Any> {
+        ex.printStackTrace()
         return ApiResult.error(ex.message ?: "잘못된 요청입니다.")
     }
 }

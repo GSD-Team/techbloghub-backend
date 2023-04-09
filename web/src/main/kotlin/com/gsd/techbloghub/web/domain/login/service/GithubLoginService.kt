@@ -40,7 +40,7 @@ class GithubLoginService @Autowired constructor(
         val user = getOrCreateUser(githubOauth2User)
         user.login()
         val loginUser = LoginUser.from(user)
-        return LoginSuccess(jwtTokenProvider.createAccessToken(loginUser), loginUser)
+        return LoginSuccess.jwtOf(jwtTokenProvider.createAccessToken(loginUser), loginUser)
     }
 
     private fun validateAndGetGithubToken(githubAccessToken: String): String {

@@ -1,5 +1,7 @@
 package com.gsd.techbloghub.web.domain.login.dto
 
+import com.gsd.techbloghub.web.global.component.JwtProperties
+import com.gsd.techbloghub.web.global.component.JwtTokenProvider
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
@@ -14,4 +16,9 @@ class LoginSuccess(
     @Schema(description = "로그인한 사용자 정보")
     val loginUser: LoginUser,
 ) {
+    companion object {
+        fun jwtOf(accessToken: String, loginUser: LoginUser): LoginSuccess {
+            return LoginSuccess("${JwtProperties.BEARER} ${accessToken}", loginUser)
+        }
+    }
 }
